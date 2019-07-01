@@ -1,4 +1,9 @@
-<div id="ticket">
-	<h2><%= @ticket.title %></h2>
-	<%= simple_format(@ticket.description) %>
-</div>
+<ul id="tickets">
+	<% @project.tickets.each do |ticket| %>
+	  <li>
+	  	<%= ticket.id %>
+	  	<%= link_to ticket.title, [@project, ticket] %>
+	  </li>
+	<% end %>
+
+</ul>
