@@ -9,7 +9,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-  	@project = Project.find(params[:id])
   end
 
   def create
@@ -25,10 +24,9 @@ class ProjectsController < ApplicationController
   end
 
     def edit 
-      @project = Project.find(params[:id])
     end
+
     def update
-      @project = Project.find(params[:id])
       if @project.update(project_params)
          flash[:notice] = "Projec has been updated"
          redirect_to @project
@@ -51,4 +49,9 @@ class ProjectsController < ApplicationController
   def project_params
   	params.require(:project).permit(:name, :description)
   end
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
 end 
